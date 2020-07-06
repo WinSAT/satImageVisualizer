@@ -54,7 +54,12 @@ ax.add_feature(cfeature.COASTLINE)
 ax.add_feature(cfeature.BORDERS, linestyle=':')
 #ax.add_feature(cfeature.LAKES, alpha=0.5)
 #ax.add_feature(cfeature.RIVERS)
-#ax.add_feature(states_provinces, edgecolor='gray')
+states_provinces = cfeature.NaturalEarthFeature(
+    category='cultural',
+    name='admin_1_states_provinces_lines',
+    scale='50m',
+    facecolor='none')
+ax.add_feature(states_provinces, edgecolor='gray')
 
 
 #ax.imshow(data[:3, :, :].transpose((1, 2, 0)), extent=extent,origin='upper',)
