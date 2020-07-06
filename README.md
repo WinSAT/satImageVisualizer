@@ -4,6 +4,7 @@ Visualize images from the WinSAT satellite
 pip install --upgrade setuptools
 pip install --upgrade pip
 
+virtualenv venv
 
 pip freeze > requirements.txt 
 pip install -r requirements.txt
