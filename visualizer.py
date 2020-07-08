@@ -3,6 +3,8 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import matplotlib.pyplot as plt
 import xarray as xr
+from IPython import embed
+import numpy
 from affine import Affine
 
 gdal.UseExceptions()
@@ -63,7 +65,10 @@ ax.add_feature(states_provinces, edgecolor='gray')
 
 
 #ax.imshow(data[:3, :, :].transpose((1, 2, 0)), extent=extent,origin='upper',)
-ax.imshow(data[:3, :, :].transpose((1, 2, 0)), extent=extent,origin='upper',)
-
+image = data[:3, :, :].transpose((1, 2, 0))
+image = image.astype(float)
+image /= 255.
+image = numpy.ma.masked_where(image == 0.0, image)
+ax.imshow(image, extent=extent,origin='upper',)
 plt.show()
 #'''
